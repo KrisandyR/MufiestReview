@@ -32,7 +32,7 @@ public class RegisterActivity extends AppCompatActivity {
         super.onStart();
         FirebaseUser currentUser = auth.getCurrentUser();
         if(currentUser != null){
-            Intent homePage = new Intent(this, HomeActivity.class);
+            Intent homePage = new Intent(this, MainActivity.class);
 
             startActivity(homePage);
 
@@ -51,7 +51,7 @@ public class RegisterActivity extends AppCompatActivity {
         registerButton = findViewById(R.id.registerButton);
         loginText = findViewById(R.id.loginTextView);
 
-        Intent loginPage = new Intent(this, LoginActivity.class);
+        Intent loginPage = new Intent(this, MainActivity.class);
 
         loginText.setOnClickListener(new View.OnClickListener() {
             @Override
