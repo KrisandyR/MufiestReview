@@ -14,7 +14,7 @@
         android:layout_centerInParent="true"
         android:scaleType="centerCrop"
         android:contentDescription="Login Background Image"
-        android:src="@drawable/image_login_page" />
+        android:src="@drawable/solid_color_image_blue_grey" />
 
     <!-- Gradient Overlay -->
     <View

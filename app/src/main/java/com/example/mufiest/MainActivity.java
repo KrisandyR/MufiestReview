@@ -25,6 +25,7 @@ import com.example.mufiest.fragments.ReviewWithPosterList;
 import com.example.mufiest.models.Movie;
 import com.example.mufiest.models.ReviewWithDetail;
 import com.google.android.material.navigation.NavigationView;
+import com.google.firebase.auth.FirebaseAuth;
 
 import java.util.ArrayList;
 
@@ -32,10 +33,13 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
     private DrawerLayout drawerLayout;
     private NavigationView navView;
+    private FirebaseAuth auth;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        auth = FirebaseAuth.getInstance();
 
         Toolbar toolbar = findViewById(R.id.nav_toolbar);
         setSupportActionBar(toolbar);
@@ -74,9 +78,18 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 transaction.commit();
                 navView.setCheckedItem(R.id.movies_menu);
                 break;
+            case R.id.logout_menu:
+                logout();
+                Intent intent = new Intent(this, LoginActivity.class);
+                startActivity(intent);
+                finish();
         }
         drawerLayout.closeDrawer(GravityCompat.START);
         return true;
+    }
+
+    private void logout() {
+        auth.signOut();
     }
 
     @Override

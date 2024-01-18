@@ -2,6 +2,7 @@ package com.example.mufiest;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.util.Patterns;
 import android.view.View;
 import android.widget.EditText;
@@ -26,7 +27,9 @@ public class LoginActivity extends AppCompatActivity {
     public void onStart() {
         super.onStart();
         FirebaseUser currentUser = auth.getCurrentUser();
+
         if(currentUser != null){
+
             Intent homePage = new Intent(this, MainActivity.class);
 
             startActivity(homePage);
