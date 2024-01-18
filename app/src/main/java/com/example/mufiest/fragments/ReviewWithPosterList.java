@@ -63,7 +63,7 @@ public class ReviewWithPosterList extends Fragment {
         reviewListTitleTv.setText(sortReviewBy + " Reviews");
 
         if(reviews != null) {
-            LinearLayoutManager layoutManager = new LinearLayoutManager(getContext(), LinearLayoutManager.HORIZONTAL, false);
+            LinearLayoutManager layoutManager = new LinearLayoutManager(getContext(), LinearLayoutManager.VERTICAL, false);
             reviewListRv.setLayoutManager(layoutManager);
 
             ReviewWithPosterListAdapter adapter = new ReviewWithPosterListAdapter(getContext(), reviews);

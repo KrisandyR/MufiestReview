@@ -51,7 +51,7 @@ public class RegisterActivity extends AppCompatActivity {
         registerButton = findViewById(R.id.registerButton);
         loginText = findViewById(R.id.loginTextView);
 
-        Intent loginPage = new Intent(this, MainActivity.class);
+        Intent loginPage = new Intent(this, LoginActivity.class);
 
         loginText.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -121,8 +121,8 @@ public class RegisterActivity extends AppCompatActivity {
     }
 
     private void saveUserDataToDatabase(String username, String email, String password) {
-        String userId = auth.getCurrentUser().getUid();
 
+        String userId = databaseReference.push().getKey();
         DatabaseReference userRef = databaseReference.child(userId);
 
         // Save user data to the database
