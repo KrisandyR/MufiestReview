@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#0D0D0D"
-    tools:context=".MainActivity">
+    tools:context=".LoginActivity">
 
     <!-- Background Image -->
     <ImageView
@@ -38,11 +38,23 @@
             android:contentDescription="Mufiest Logo"
             android:layout_centerHorizontal="true"/>
 
-        <EditText
-            android:id="@+id/editTextEmail"
-            android:layout_width="330dp"
+        <!-- Information Text -->
+        <TextView
+            android:id="@+id/informationText"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@id/logoImageView"
+            android:layout_centerInParent="true"
+            android:layout_marginTop="7dp"
+            android:text="Fill the information below"
+            android:textColor="@color/white"
+            android:textSize="16dp" />
+
+        <EditText
+            android:id="@+id/emailBox"
+            android:layout_width="330dp"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/informationText"
             android:layout_marginTop="16dp"
             android:layout_marginBottom="16dp"
             android:hint="Email"
@@ -50,10 +62,10 @@
             android:background="#FFFFFF"/>
 
         <EditText
-            android:id="@+id/editTextPassword"
+            android:id="@+id/passwordBox"
             android:layout_width="330dp"
             android:layout_height="wrap_content"
-            android:layout_below="@id/editTextEmail"
+            android:layout_below="@id/emailBox"
             android:layout_marginBottom="16dp"
             android:hint="Password"
             android:inputType="textPassword"
@@ -68,7 +80,7 @@
             android:gravity="center"
             android:background="@drawable/rounded_button"
 
-            android:layout_below="@id/editTextPassword"
+            android:layout_below="@id/passwordBox"
             android:layout_centerHorizontal="true"
             android:layout_margin="2dp">
 

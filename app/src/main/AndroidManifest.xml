@@ -22,7 +22,11 @@
             android:exported="false" />
 
         <activity
-            android:name=".MainActivity"
+            android:name=".LoginActivity"
+            android:exported="false" />
+
+        <activity
+            android:name=".RegisterActivity"
             android:theme="@style/Theme.Mufiest.NoActionBar"
             android:exported="true">
             <intent-filter>
