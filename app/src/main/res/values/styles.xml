@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="RalewayRegularTextStyle">
+        <item name="android:fontFamily">@font/font_family_regular</item>
+        <item name="android:textColor">@color/white</item>
+    </style>
+
+    <style name="RalewaySemiBoldTextStyle">
+        <item name="android:fontFamily">@font/font_family_semibold</item>
+        <item name="android:textColor">@color/white</item>
+    </style>
+
+</resources>

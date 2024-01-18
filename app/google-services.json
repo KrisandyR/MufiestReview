@@ -1,0 +1,49 @@
+{
+  "project_info": {
+    "project_number": "847987903043",
+    "firebase_url": "https://mufiest-e2f6c-default-rtdb.asia-southeast1.firebasedatabase.app",
+    "project_id": "mufiest-e2f6c",
+    "storage_bucket": "mufiest-e2f6c.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:847987903043:android:81b3fa6b8cc28bc263a2f6",
+        "android_client_info": {
+          "package_name": "com.example.mufiest"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDpDyslwhSe57gSkIOtfrKcPorZFIP08wc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:847987903043:android:9975ac22cb7308ab63a2f6",
+        "android_client_info": {
+          "package_name": "com.example.myapptest"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDpDyslwhSe57gSkIOtfrKcPorZFIP08wc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
