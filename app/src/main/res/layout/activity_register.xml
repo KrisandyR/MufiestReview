@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#0D0D0D"
+    tools:context=".RegisterActivity">
+
+    <!-- Background Image -->
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_centerInParent="true"
+        android:scaleType="centerCrop"
+        android:contentDescription="Login Background Image"
+        android:src="@drawable/image_login_page" />
+
+    <!-- Gradient Overlay -->
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/login_image_gradient_overlay" />
+
+    <!-- Content -->
+    <RelativeLayout
+        android:id="@+id/centerContainer"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true">
+
+        <!-- Mufiest Logo -->
+        <ImageView
+            android:id="@+id/logoImageView"
+            android:layout_width="250dp"
+            android:layout_height="56dp"
+            android:src="@drawable/mufiest_upper_logo_gold"
+            android:contentDescription="Mufiest Logo"
+            android:layout_centerHorizontal="true"/>
+
+        <!-- Information Text -->
+        <TextView
+            android:id="@+id/informationText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/logoImageView"
+            android:layout_centerInParent="true"
+            android:layout_marginTop="7dp"
+            android:text="Fill the information below"
+            android:textColor="@color/white"
+            android:textSize="16dp" />
+
+        <EditText
+            android:id="@+id/usernameBox"
+            android:layout_width="330dp"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/informationText"
+            android:layout_marginTop="16dp"
+            android:layout_marginBottom="16dp"
+            android:hint="Username"
+            android:background="#FFFFFF"/>
+
+        <EditText
+            android:id="@+id/emailBox"
+            android:layout_width="330dp"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/usernameBox"
+            android:layout_marginBottom="16dp"
+            android:hint="Email"
+            android:inputType="textEmailAddress"
+            android:background="#FFFFFF"/>
+
+        <EditText
+            android:id="@+id/passwordBox"
+            android:layout_width="330dp"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/emailBox"
+            android:layout_marginBottom="16dp"
+            android:hint="Password"
+            android:inputType="textPassword"
+            android:background="#FFFFFF"/>
+
+        <!-- Login Button -->
+        <LinearLayout
+            android:id="@+id/registerButton"
+            android:layout_width="100dp"
+            android:layout_height="43dp"
+            android:orientation="horizontal"
+            android:gravity="center"
+            android:background="@drawable/rounded_button"
+
+            android:layout_below="@id/passwordBox"
+            android:layout_centerHorizontal="true"
+            android:layout_margin="2dp">
+
+            <!-- Register Button -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="#000000"
+                android:text="Register"
+                android:textSize="16dp" />
+        </LinearLayout>
+
+        <!-- Login Text -->
+        <TextView
+            android:id="@+id/loginTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/registerButton"
+            android:layout_centerInParent="true"
+            android:layout_marginTop="13dp"
+            android:text="Click To Login"
+            android:textColor="#FFFF"
+            android:textSize="16dp" />
+
+    </RelativeLayout>
+
+</RelativeLayout>
