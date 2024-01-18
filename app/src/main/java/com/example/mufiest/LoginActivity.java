@@ -27,7 +27,7 @@ public class LoginActivity extends AppCompatActivity {
         super.onStart();
         FirebaseUser currentUser = auth.getCurrentUser();
         if(currentUser != null){
-            Intent homePage = new Intent(this, HomeActivity.class);
+            Intent homePage = new Intent(this, MainActivity.class);
 
             startActivity(homePage);
 
@@ -44,7 +44,7 @@ public class LoginActivity extends AppCompatActivity {
         passwordBox =  findViewById(R.id.passwordBox);
         loginButton = findViewById(R.id.loginButton);
 
-        Intent homePage = new Intent(this, HomeActivity.class);
+        Intent homePage = new Intent(this, MainActivity.class);
 
         auth = FirebaseAuth.getInstance();
 
