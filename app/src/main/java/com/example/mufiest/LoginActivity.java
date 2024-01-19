@@ -7,6 +7,7 @@ import android.util.Patterns;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.LinearLayout;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -19,9 +20,10 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
 public class LoginActivity extends AppCompatActivity {
-    EditText emailBox, passwordBox;
-    LinearLayout loginButton;
-    FirebaseAuth auth;
+    private EditText emailBox, passwordBox;
+    private LinearLayout loginButton;
+    private FirebaseAuth auth;
+    private TextView registerTextView;
 
     @Override
     public void onStart() {
@@ -46,6 +48,18 @@ public class LoginActivity extends AppCompatActivity {
         emailBox = findViewById(R.id.emailBox);
         passwordBox =  findViewById(R.id.passwordBox);
         loginButton = findViewById(R.id.loginButton);
+        registerTextView = findViewById(R.id.registerTextView);
+
+        Intent registerPage = new Intent(this, RegisterActivity.class);
+
+        registerTextView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(registerPage);
+
+                finish();
+            }
+        });
 
         Intent homePage = new Intent(this, MainActivity.class);
 
