@@ -88,10 +88,8 @@ public class ProfileFragment extends Fragment {
                         textUsername.setText(user.getUsername());
                         textEmail.setText(user.getEmail());
 
-                        Log.d("CustomUID", user.getProfileImageUri());
-
                         Picasso.get()
-                            .load(user.getProfileImageUri())
+                            .load(user.getProfileUrl())
                             .into(imageProfile);
                     }
                 }
@@ -132,7 +130,7 @@ public class ProfileFragment extends Fragment {
     }
 
     private void updateProfileImageUri(Uri imageUri) {
-        userRef.child("profileImageUri").setValue(imageUri.toString())
+        userRef.child("profileUrl").setValue(imageUri.toString())
                 .addOnCompleteListener(new OnCompleteListener<Void>() {
                     @Override
                     public void onComplete(@NonNull Task<Void> task) {
