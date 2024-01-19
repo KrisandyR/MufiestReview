@@ -1,11 +1,14 @@
 package com.example.mufiest.fragments;
 
+import android.content.Context;
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -22,15 +25,15 @@ import java.util.ArrayList;
  * Use the {@link MovieScrollList#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class MovieScrollList extends Fragment {
+public class MovieScrollList extends Fragment implements MovieScrollListAdapter.OnMovieClickListener {
 
     private TextView movieListTextView;
-
     private RecyclerView recyclerView;
     private static final String ARG_PARAM1 = "movies";
     private static final String ARG_PARAM2 = "movieListType";
     private ArrayList<Movie> movies;
     private String movieListType;
+    private MovieScrollListAdapter adapter;
     public MovieScrollList() {
         // Required empty public constructor
     }
@@ -42,6 +45,11 @@ public class MovieScrollList extends Fragment {
         args.putString(ARG_PARAM2, movieListType);
         fragment.setArguments(args);
         return fragment;
+    }
+
+    @Override
+    public void onAttach(@NonNull Context context) {
+        super.onAttach(context);
     }
 
     @Override
@@ -67,10 +75,18 @@ public class MovieScrollList extends Fragment {
             LinearLayoutManager layoutManager = new LinearLayoutManager(getContext(), LinearLayoutManager.HORIZONTAL, false);
             recyclerView.setLayoutManager(layoutManager);
 
-            MovieScrollListAdapter adapter = new MovieScrollListAdapter(getContext(), movies);
+            adapter = new MovieScrollListAdapter(getContext(), movies, this);
             recyclerView.setAdapter(adapter);
         }
-
         return view;
+    }
+
+    @Override
+    public void onMovieClicked(String movieId) {
+        if (getActivity() instanceof MovieScrollListAdapter.OnMovieClickListener) {
+            ((MovieScrollListAdapter.OnMovieClickListener) getActivity()).onMovieClicked(movieId);
+        } else {
+            Log.w("MovieScrollListFragment", "MainActivity does not implement OnMovieClickedListener");
+        }
     }
 }

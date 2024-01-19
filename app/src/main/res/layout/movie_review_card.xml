@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:paddingBottom="12dp">
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:cardBackgroundColor="@color/light_blue_grey"
+        app:contentPaddingBottom="7dp"
+        app:contentPaddingLeft="20dp"
+        app:contentPaddingRight="20dp"
+        app:contentPaddingTop="7dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:paddingTop="5dp">
+
+                <LinearLayout android:layout_height="wrap_content" android:layout_width="wrap_content">
+                    <RatingBar
+                        android:id="@+id/rb_review_rating_mrc"
+                        style="@style/Widget.AppCompat.RatingBar.Small"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:numStars="5"
+                        android:progressTint="@color/orange"
+                        android:rating="3.5"
+                        android:stepSize="0.5"
+                        android:layout_gravity="start"
+                        />
+                </LinearLayout>
+
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:gravity="bottom"
+                    android:textSize="13sp"
+                    android:fontFamily="@font/raleway_semibold"
+                    android:id="@+id/tv_reviewer_mrc"
+                    android:text="User" />
+            </RelativeLayout>
+
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/tv_review_desc_mrc"
+                android:text="Review"
+                android:textSize="11sp"
+                android:paddingTop="6dp"
+                android:paddingBottom="5dp"
+                android:fontFamily="@font/lato_regular"
+            />
+
+
+        </LinearLayout>
+    </androidx.cardview.widget.CardView>
+</LinearLayout>

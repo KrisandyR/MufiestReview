@@ -11,7 +11,6 @@
         <item name="colorOnSecondary">@color/black</item>
         <!-- Status bar color. -->
         <item name="android:windowBackground">@color/dark_blue_grey</item>
-        <item name="fontFamily">@font/font_family_semibold</item>
         <item name="textAppearanceHeadline6">@style/AppLabelStyle</item>
     </style>
 
@@ -39,7 +38,6 @@
         <item name="colorOnSecondary">@color/black</item>
         <!-- Status bar color. -->
         <item name="android:windowBackground">@color/dark_blue_grey</item>
-        <item name="fontFamily">@font/font_family_semibold</item>
         <item name="textAppearanceHeadline6">@style/AppLabelStyle</item>
     </style>
 
