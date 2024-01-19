@@ -14,7 +14,7 @@
             />
 
         <item
-            android:id="@+id/movies_menu"
+            android:id="@+id/movies_menu_search"
             android:icon="@drawable/nav_search"
             android:title="@string/movies"
             />

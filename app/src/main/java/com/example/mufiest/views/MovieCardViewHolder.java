@@ -8,18 +8,13 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.mufiest.R;
 
-public class MovieCardViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
+public class MovieCardViewHolder extends RecyclerView.ViewHolder {
 
     public ImageView posterImageView;
 
     public MovieCardViewHolder(View itemView) {
         super(itemView);
         posterImageView = itemView.findViewById(R.id.moviePosterImage);
-        posterImageView.setOnClickListener(this);
     }
 
-    @Override
-    public void onClick(View view) {
-
-    }
 }

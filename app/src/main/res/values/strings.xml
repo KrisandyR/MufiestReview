@@ -99,4 +99,8 @@
     <string name="logout">Logout</string>
     <string name="open_nav">Navigation Drawer</string>
     <string name="close_nav">Close Navigation Drawer</string>
+    <string name="movie_name">Movie Name</string>
+    <string name="movie_background">Movie Background</string>
+    <string name="movie_name_placeholder">Movie Name Placeholder</string>
+    <string name="lorem_ipsum_description_movie">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec vel dictum sapien. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Proin in purus ut turpis venenatis placerat. Integer a dolor in sem tristique pellentesque non nec arcu. Duis feugiat dui quis sapien tempus dapibus. Lorem ipsum dolor sit amet, consectetur adipiscing elit.</string>
 </resources>

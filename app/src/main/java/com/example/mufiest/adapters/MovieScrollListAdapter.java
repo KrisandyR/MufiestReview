@@ -20,10 +20,12 @@ public class MovieScrollListAdapter extends RecyclerView.Adapter<MovieCardViewHo
 
     private ArrayList<Movie> movies;
     private LayoutInflater mInflater;
+    private OnMovieClickListener clickListener;
 
-    public MovieScrollListAdapter(Context ctx, ArrayList<Movie> movies) {
+    public MovieScrollListAdapter(Context ctx, ArrayList<Movie> movies, OnMovieClickListener clickListener) {
         this.mInflater = LayoutInflater.from(ctx);
         this.movies = movies;
+        this.clickListener = clickListener;
     }
 
     @NonNull
@@ -38,10 +40,21 @@ public class MovieScrollListAdapter extends RecyclerView.Adapter<MovieCardViewHo
         Movie movie = movies.get(position);
         String moviePosterUrl = movie.getPosterUrl();
         Picasso.get().load(moviePosterUrl).into(holder.posterImageView);
+
+        holder.posterImageView.setOnClickListener(view -> {
+            if (clickListener != null) {
+                clickListener.onMovieClicked(movie.getMovieId());
+            }
+        });
     }
 
     @Override
     public int getItemCount() {
         return movies.size();
     }
+
+    public interface OnMovieClickListener {
+        void onMovieClicked(String movieId);
+    }
+
 }

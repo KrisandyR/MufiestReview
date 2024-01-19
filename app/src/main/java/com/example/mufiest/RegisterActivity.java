@@ -122,6 +122,9 @@ public class RegisterActivity extends AppCompatActivity {
 
     private void saveUserDataToDatabase(String username, String email, String password) {
 
+        FirebaseAuth mAuth = FirebaseAuth.getInstance();
+
+        String authId = mAuth.getCurrentUser().getUid();
         String userId = databaseReference.push().getKey();
         DatabaseReference userRef = databaseReference.child(userId);
 
@@ -130,6 +133,7 @@ public class RegisterActivity extends AppCompatActivity {
         userRef.child("password").setValue(password);
         userRef.child("userId").setValue(userId);
         userRef.child("username").setValue(username);
+        userRef.child("authId").setValue(authId);
 
     }
 }

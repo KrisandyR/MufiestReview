@@ -16,20 +16,14 @@ import android.util.Log;
 import android.view.MenuItem;
 
 
-import com.example.mufiest.controller.MovieController;
-import com.example.mufiest.controller.ReviewController;
+import com.example.mufiest.adapters.MovieScrollListAdapter;
 import com.example.mufiest.fragments.HomeFragment;
 import com.example.mufiest.fragments.MovieFragment;
-import com.example.mufiest.fragments.MovieScrollList;
-import com.example.mufiest.fragments.ReviewWithPosterList;
-import com.example.mufiest.models.Movie;
-import com.example.mufiest.models.ReviewWithDetail;
+import com.example.mufiest.fragments.MovieSearchFragment;
 import com.google.android.material.navigation.NavigationView;
 import com.google.firebase.auth.FirebaseAuth;
 
-import java.util.ArrayList;
-
-public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
+public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener, MovieScrollListAdapter.OnMovieClickListener {
 
     private DrawerLayout drawerLayout;
     private NavigationView navView;
@@ -73,10 +67,10 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 transaction.commit();
                 navView.setCheckedItem(R.id.home_menu);
                 break;
-            case R.id.movies_menu:
-                transaction.replace(R.id.content_container, new MovieFragment());
+            case R.id.movies_menu_search:
+                transaction.replace(R.id.content_container, new MovieSearchFragment());
                 transaction.commit();
-                navView.setCheckedItem(R.id.movies_menu);
+                navView.setCheckedItem(R.id.movies_menu_search);
                 break;
             case R.id.logout_menu:
                 logout();
@@ -95,5 +89,14 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     @Override
     public void onPointerCaptureChanged(boolean hasCapture) {
         super.onPointerCaptureChanged(hasCapture);
+    }
+
+    @Override
+    public void onMovieClicked(String movieId) {
+        Log.v("movieId", movieId);
+        FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
+        transaction.replace(R.id.content_container, MovieFragment.newInstance(movieId));
+        transaction.commit();
+        navView.setCheckedItem(0);
     }
 }

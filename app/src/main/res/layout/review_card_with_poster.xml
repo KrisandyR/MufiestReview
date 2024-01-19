@@ -34,30 +34,40 @@
                     android:orientation="horizontal">
 
                     <TextView
+                        android:layout_gravity="bottom"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:id="@+id/tv_movie_title_rcwp"
                         android:text="Movie Name"
                         android:layout_marginRight="5dp"
+                        android:fontFamily="@font/raleway_semibold"
+                        android:textSize="16sp"
                         />
 
                     <TextView
+                        android:id="@+id/tv_movie_year_rcwp"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:id="@+id/tv_movie_year_rcwp"
-                        android:text="(Year)" />
+                        android:layout_gravity="bottom"
+                        android:fontFamily="@font/lato_regular"
+                        android:text="(Year)"
+                        android:textSize="16sp"
+                        />
                 </LinearLayout>
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="end"
-                    android:textSize="12sp"
+                    android:textSize="13sp"
                     android:id="@+id/tv_reviewer_rcwp"
-                    android:text="User" />
+                    android:fontFamily="@font/lato_regular"
+                    android:text="User"
+                />
             </LinearLayout>
 
             <RatingBar
+                android:layout_marginTop="4dp"
                 android:id="@+id/rb_review_rating_rcwp"
                 style="@style/Widget.AppCompat.RatingBar.Small"
                 android:layout_width="wrap_content"
@@ -71,7 +81,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
-                android:paddingVertical="7dp">
+                android:paddingVertical="10dp">
 
                 <ImageView
                     android:id="@+id/iv_movie_poster_rcwp"
@@ -80,11 +90,12 @@
                     android:src="@drawable/solid_color_image_blue_grey" />
 
                 <TextView
-                    android:layout_marginLeft="5dp"
+                    android:fontFamily="@font/raleway_regular"
+                    android:layout_marginLeft="10dp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:id="@+id/tv_review_desc_rcwp"
-                    android:text=""
+                    android:text="aaaaaaaaaaaaaaaaaaa"
                     android:textSize="11sp" />
             </LinearLayout>
         </LinearLayout>

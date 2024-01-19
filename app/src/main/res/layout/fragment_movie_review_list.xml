@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    tools:context=".fragments.ReviewWithPosterList"
+    android:orientation="vertical"
+    >
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rv_review_scroll_list_fmrl"
+        android:layout_width="match_parent"
+        android:layout_height="500dp"
+        android:orientation="vertical"
+        android:scrollbars="vertical"
+    />
+
+    <TextView
+        android:id="@+id/no_review_tv"
+        android:paddingVertical="15dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:text="NO REVIEWS YET"
+        android:textColor="@color/lighter_blue_grey_2"
+        android:textSize="11sp"
+        android:fontFamily="@font/lato_regular"
+        android:visibility="gone"
+        />
+
+</FrameLayout>
