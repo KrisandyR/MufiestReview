@@ -11,14 +11,14 @@ public class User implements Parcelable {
     private String username;
     private String email;
     private String password;
-    private String profileUrl;
+    private String profileImageUri;
 
-    public User(String userId, String username, String email, String password, String profileUrl) {
+    public User(String userId, String username, String email, String password, String profileImageUri) {
         this.userId = userId;
         this.username = username;
         this.email = email;
         this.password = password;
-        this.profileUrl = profileUrl;
+        this.profileImageUri = profileImageUri;
     }
 
     public User() {
@@ -30,7 +30,7 @@ public class User implements Parcelable {
         username = in.readString();
         email = in.readString();
         password = in.readString();
-        profileUrl = in.readString();
+        profileImageUri = in.readString();
     }
 
     @Override
@@ -39,7 +39,7 @@ public class User implements Parcelable {
         dest.writeString(username);
         dest.writeString(email);
         dest.writeString(password);
-        dest.writeString(profileUrl);
+        dest.writeString(profileImageUri);
     }
 
     @Override
@@ -91,11 +91,11 @@ public class User implements Parcelable {
         this.password = password;
     }
 
-    public String getProfileUrl() {
-        return profileUrl;
+    public String getProfileImageUri() {
+        return profileImageUri;
     }
 
-    public void setProfileUrl(String profileUrl) {
-        this.profileUrl = profileUrl;
+    public void setProfileImageUri(String profileUrl) {
+        this.profileImageUri = profileUrl;
     }
 }

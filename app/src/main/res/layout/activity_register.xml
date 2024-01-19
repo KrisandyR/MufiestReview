@@ -32,24 +32,12 @@
             android:contentDescription="Mufiest Logo"
             android:layout_centerHorizontal="true"/>
 
-        <!-- Information Text -->
-        <TextView
-            android:id="@+id/informationText"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/logoImageView"
-            android:layout_centerInParent="true"
-            android:layout_marginTop="7dp"
-            android:text="Fill the information below"
-            android:textColor="@color/white"
-            android:textSize="16dp" />
-
         <EditText
             android:id="@+id/usernameBox"
             android:layout_width="330dp"
             android:layout_height="wrap_content"
-            android:layout_below="@id/informationText"
-            android:layout_marginTop="16dp"
+            android:layout_below="@id/logoImageView"
+            android:layout_marginTop="20dp"
             android:layout_marginBottom="16dp"
             android:hint="Username" />
 

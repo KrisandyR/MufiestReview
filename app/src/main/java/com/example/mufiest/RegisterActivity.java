@@ -12,6 +12,7 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.mufiest.models.User;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
@@ -26,6 +27,7 @@ public class RegisterActivity extends AppCompatActivity {
     private TextView loginText;
     private FirebaseAuth auth;
     private DatabaseReference databaseReference;
+    private static final String DEFAULT_PROFILE_IMAGE = "https://i.imgur.com/V4RclNb.png";
 
     @Override
     public void onStart() {
@@ -121,15 +123,15 @@ public class RegisterActivity extends AppCompatActivity {
     }
 
     private void saveUserDataToDatabase(String username, String email, String password) {
-
+        String authId = auth.getCurrentUser().getUid();
         String userId = databaseReference.push().getKey();
+
         DatabaseReference userRef = databaseReference.child(userId);
 
-        // Save user data to the database
-        userRef.child("email").setValue(email);
-        userRef.child("password").setValue(password);
-        userRef.child("userId").setValue(userId);
-        userRef.child("username").setValue(username);
+        // Save to user model
+        User user = new User(authId, username, email, password, DEFAULT_PROFILE_IMAGE);
 
+        // Save user data to the database
+        userRef.setValue(user);
     }
 }
