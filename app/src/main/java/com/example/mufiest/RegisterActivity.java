@@ -21,11 +21,11 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
 public class RegisterActivity extends AppCompatActivity {
-    EditText usernameBox, emailBox, passwordBox;
-    LinearLayout registerButton;
-    TextView loginText;
-    FirebaseAuth auth;
-    DatabaseReference databaseReference;
+    private EditText usernameBox, emailBox, passwordBox;
+    private LinearLayout registerButton;
+    private TextView loginText;
+    private FirebaseAuth auth;
+    private DatabaseReference databaseReference;
 
     @Override
     public void onStart() {
