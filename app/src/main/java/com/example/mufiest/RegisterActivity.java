@@ -12,6 +12,7 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.mufiest.models.User;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
@@ -21,11 +22,12 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
 public class RegisterActivity extends AppCompatActivity {
-    EditText usernameBox, emailBox, passwordBox;
-    LinearLayout registerButton;
-    TextView loginText;
-    FirebaseAuth auth;
-    DatabaseReference databaseReference;
+    private EditText usernameBox, emailBox, passwordBox;
+    private LinearLayout registerButton;
+    private TextView loginText;
+    private FirebaseAuth auth;
+    private DatabaseReference databaseReference;
+    private static final String DEFAULT_PROFILE_IMAGE = "https://i.imgur.com/V4RclNb.png";
 
     @Override
     public void onStart() {
@@ -121,16 +123,15 @@ public class RegisterActivity extends AppCompatActivity {
     }
 
     private void saveUserDataToDatabase(String username, String email, String password) {
-        FirebaseAuth mAuth = FirebaseAuth.getInstance();
-
-        String authId = mAuth.getCurrentUser().getUid();
+        String authId = auth.getCurrentUser().getUid();
         String userId = databaseReference.push().getKey();
+
         DatabaseReference userRef = databaseReference.child(userId);
 
-        userRef.child("email").setValue(email);
-        userRef.child("password").setValue(password);
-        userRef.child("userId").setValue(userId);
-        userRef.child("username").setValue(username);
-        userRef.child("authId").setValue(authId);
+        // Save to user model
+        User user = new User(authId, username, email, password, DEFAULT_PROFILE_IMAGE);
+
+        // Save user data to the database
+        userRef.setValue(user);
     }
 }

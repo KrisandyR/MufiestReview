@@ -19,7 +19,14 @@ import android.view.MenuItem;
 import com.example.mufiest.adapters.MovieScrollListAdapter;
 import com.example.mufiest.fragments.HomeFragment;
 import com.example.mufiest.fragments.MovieFragment;
+
 import com.example.mufiest.fragments.MovieSearchFragment;
+import com.example.mufiest.fragments.MovieScrollList;
+import com.example.mufiest.fragments.ProfileFragment;
+import com.example.mufiest.fragments.ReviewWithPosterList;
+import com.example.mufiest.models.Movie;
+import com.example.mufiest.models.ReviewWithDetail;
+
 import com.google.android.material.navigation.NavigationView;
 import com.google.firebase.auth.FirebaseAuth;
 
@@ -75,11 +82,17 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 transaction.commit();
                 navView.setCheckedItem(R.id.movies_menu_search);
                 break;
+            case R.id.profile_menu:
+                transaction.replace(R.id.content_container, new ProfileFragment());
+                transaction.commit();
+                navView.setCheckedItem(R.id.profile_menu);
+                break;
             case R.id.logout_menu:
                 logout();
                 Intent intent = new Intent(this, LoginActivity.class);
                 startActivity(intent);
                 finish();
+                break;
         }
         drawerLayout.closeDrawer(GravityCompat.START);
         return true;
