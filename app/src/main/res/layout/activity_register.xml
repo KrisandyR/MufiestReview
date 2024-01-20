@@ -35,29 +35,45 @@
         <EditText
             android:id="@+id/usernameBox"
             android:layout_width="330dp"
-            android:layout_height="wrap_content"
+            android:layout_height="50dp"
             android:layout_below="@id/logoImageView"
             android:layout_marginTop="20dp"
-            android:layout_marginBottom="16dp"
-            android:hint="Username" />
+            android:layout_marginBottom="13dp"
+            android:hint="Username"
+            android:inputType="text"
+            android:textColorHint="@color/white"
+            android:textColor="@color/white"
+            android:textSize="18sp"
+            android:padding="13dp"
+            android:background="@drawable/form_box"/>
 
         <EditText
             android:id="@+id/emailBox"
             android:layout_width="330dp"
-            android:layout_height="wrap_content"
+            android:layout_height="50dp"
             android:layout_below="@id/usernameBox"
-            android:layout_marginBottom="16dp"
+            android:layout_marginBottom="13dp"
             android:hint="Email"
-            android:inputType="textEmailAddress" />
+            android:inputType="textEmailAddress"
+            android:textColorHint="@color/white"
+            android:textColor="@color/white"
+            android:textSize="18sp"
+            android:padding="13dp"
+            android:background="@drawable/form_box"/>
 
         <EditText
             android:id="@+id/passwordBox"
             android:layout_width="330dp"
-            android:layout_height="wrap_content"
+            android:layout_height="50dp"
             android:layout_below="@id/emailBox"
             android:layout_marginBottom="16dp"
             android:hint="Password"
-            android:inputType="textPassword" />
+            android:inputType="textPassword"
+            android:textColorHint="@color/white"
+            android:textColor="@color/white"
+            android:textSize="18sp"
+            android:padding="13dp"
+            android:background="@drawable/form_box"/>
 
         <!-- Login Button -->
         <LinearLayout

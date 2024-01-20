@@ -34,11 +34,9 @@ public class RegisterActivity extends AppCompatActivity {
         super.onStart();
         FirebaseUser currentUser = auth.getCurrentUser();
         if(currentUser != null){
-            Intent homePage = new Intent(this, MainActivity.class);
 
-            startActivity(homePage);
+            navigateToHomePage();
 
-            finish();
         }
     }
 
@@ -58,9 +56,7 @@ public class RegisterActivity extends AppCompatActivity {
         loginText.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(loginPage);
-
-                finish();
+                navigateToRegisterPage();
             }
         });
 
@@ -78,45 +74,58 @@ public class RegisterActivity extends AppCompatActivity {
                 email = String.valueOf(emailBox.getText());
                 password = String.valueOf(passwordBox.getText());
 
-                if (username.trim().isEmpty() || username.trim().equals("")) {
-                    Toast.makeText(RegisterActivity.this, "Username Invalid", Toast.LENGTH_SHORT).show();
-                    return;
-                }
-
-                if (email.isEmpty() || !isValidEmail(email)) {
-                    Toast.makeText(RegisterActivity.this, "Email Invalid", Toast.LENGTH_SHORT).show();
-                    return;
-                }
-
-                if (password.trim().isEmpty() || password.trim().equals("")) {
-                    Toast.makeText(RegisterActivity.this, "Password Invalid", Toast.LENGTH_SHORT).show();
-                    return;
-                }
-
-                auth.createUserWithEmailAndPassword(email, password)
-                        .addOnCompleteListener(RegisterActivity.this, new OnCompleteListener<AuthResult>() {
-                            @Override
-                            public void onComplete(@NonNull Task<AuthResult> task) {
-                                if (task.isSuccessful()) {
-                                    // Save user data to the Firebase Realtime Database
-                                    saveUserDataToDatabase(username, email, password);
-
-                                    Toast.makeText(RegisterActivity.this, "Login Success",
-                                            Toast.LENGTH_SHORT).show();
-
-                                    startActivity(loginPage);
-
-                                    finish();
-                                } else {
-                                    Toast.makeText(RegisterActivity.this, "Registration Failed.",
-                                            Toast.LENGTH_SHORT).show();
-                                }
-                            }
-                        });
+                registerUser(username, email, password);
             }
         });
     }
 
+    private void navigateToRegisterPage() {
+        Intent registerPage = new Intent(this, RegisterActivity.class);
+        startActivity(registerPage);
+        finish();
+    }
+
+    private void navigateToHomePage() {
+        Intent homePage = new Intent(this, MainActivity.class);
+        startActivity(homePage);
+        finish();
+    }
+
+
+    private void registerUser(String username, String email, String password) {
+
+        if (username.isEmpty()) {
+            Toast.makeText(RegisterActivity.this, "Username Invalid", Toast.LENGTH_SHORT).show();
+            return;
+        }
+
+        if (!isValidEmail(email)) {
+            Toast.makeText(RegisterActivity.this, "Email Invalid", Toast.LENGTH_SHORT).show();
+            return;
+        }
+
+        if (password.isEmpty()) {
+            Toast.makeText(RegisterActivity.this, "Password Invalid", Toast.LENGTH_SHORT).show();
+            return;
+        }
+
+        auth.createUserWithEmailAndPassword(email, password)
+                .addOnCompleteListener(this, task -> {
+                    if (task.isSuccessful()) {
+                        saveUserDataToDatabase(username, email, password);
+
+                        Toast.makeText(RegisterActivity.this, "Login Success",
+                                Toast.LENGTH_SHORT).show();
+
+                        startActivity(new Intent(this, LoginActivity.class));
+
+                        finish();
+                    } else {
+                        Toast.makeText(RegisterActivity.this, "Registration Failed.",
+                                Toast.LENGTH_SHORT).show();
+                    }
+                });
+    }
 
     private boolean isValidEmail(CharSequence target) {
         return Patterns.EMAIL_ADDRESS.matcher(target).matches();
