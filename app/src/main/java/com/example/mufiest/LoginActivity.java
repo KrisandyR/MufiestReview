@@ -2,7 +2,6 @@ package com.example.mufiest;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.util.Patterns;
 import android.view.View;
 import android.widget.EditText;
@@ -32,11 +31,8 @@ public class LoginActivity extends AppCompatActivity {
 
         if(currentUser != null){
 
-            Intent homePage = new Intent(this, MainActivity.class);
+            navigateToHomePage();
 
-            startActivity(homePage);
-
-            finish();
         }
     }
 
@@ -50,18 +46,14 @@ public class LoginActivity extends AppCompatActivity {
         loginButton = findViewById(R.id.loginButton);
         registerTextView = findViewById(R.id.registerTextView);
 
-        Intent registerPage = new Intent(this, RegisterActivity.class);
-
         registerTextView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(registerPage);
 
-                finish();
+                navigateToRegisterPage();
+
             }
         });
-
-        Intent homePage = new Intent(this, MainActivity.class);
 
         auth = FirebaseAuth.getInstance();
 
@@ -74,35 +66,48 @@ public class LoginActivity extends AppCompatActivity {
                 email = String.valueOf(emailBox.getText());
                 password = String.valueOf(passwordBox.getText());
 
-                if (email.isEmpty() || !isValidEmail(email)) {
-                    Toast.makeText(LoginActivity.this, "Email invalid", Toast.LENGTH_SHORT).show();
-                    return;
-                }
-
-                if (password.trim().isEmpty() || password.trim().equals("")) {
-                    Toast.makeText(LoginActivity.this, "Password invalid", Toast.LENGTH_SHORT).show();
-                    return;
-                }
-
-                auth.signInWithEmailAndPassword(email, password)
-                        .addOnCompleteListener(LoginActivity.this, new OnCompleteListener<AuthResult>() {
-                            @Override
-                            public void onComplete(@NonNull Task<AuthResult> task) {
-                                if (task.isSuccessful()) {
-                                    Toast.makeText(LoginActivity.this, "Login Success.",
-                                            Toast.LENGTH_SHORT).show();
-
-                                    startActivity(homePage);
-
-                                    finish();
-                                } else {
-                                    Toast.makeText(LoginActivity.this, "Login Failed.",
-                                            Toast.LENGTH_SHORT).show();
-                                }
-                            }
-                        });
+                performLogin(email, password);
             }
         });
+    }
+
+    private void navigateToRegisterPage() {
+        Intent registerPage = new Intent(this, RegisterActivity.class);
+        startActivity(registerPage);
+        finish();
+    }
+
+    private void navigateToHomePage() {
+        Intent homePage = new Intent(this, MainActivity.class);
+        startActivity(homePage);
+        finish();
+    }
+
+    private void performLogin(String email, String password) {
+
+        if (!isValidEmail(email) || email.trim().equals("")) {
+            Toast.makeText(LoginActivity.this, "Email invalid", Toast.LENGTH_SHORT).show();
+            return;
+        }
+
+        if (password.isEmpty() || password.trim().equals("")) {
+            Toast.makeText(LoginActivity.this, "Password invalid", Toast.LENGTH_SHORT).show();
+            return;
+        }
+
+        auth.signInWithEmailAndPassword(email, password)
+                .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
+                    @Override
+                    public void onComplete(@NonNull Task<AuthResult> task) {
+                        if (task.isSuccessful()) {
+                            Toast.makeText(LoginActivity.this, "Login Success", Toast.LENGTH_SHORT).show();
+
+                            navigateToHomePage();
+                        } else {
+                            Toast.makeText(LoginActivity.this, "Login Failed", Toast.LENGTH_SHORT).show();
+                        }
+                    }
+                });
     }
 
     private boolean isValidEmail(CharSequence target) {

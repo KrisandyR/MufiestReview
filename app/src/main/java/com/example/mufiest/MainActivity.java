@@ -29,12 +29,14 @@ import com.example.mufiest.models.ReviewWithDetail;
 
 import com.google.android.material.navigation.NavigationView;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener, MovieScrollListAdapter.OnMovieClickListener {
 
     private DrawerLayout drawerLayout;
     private NavigationView navView;
     private FirebaseAuth auth;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
