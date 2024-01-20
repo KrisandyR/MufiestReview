@@ -35,9 +35,11 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
         auth = FirebaseAuth.getInstance();
 
+        // Set Up Toolbar
         Toolbar toolbar = findViewById(R.id.nav_toolbar);
         setSupportActionBar(toolbar);
 
+        // Set Up Navigation Drawer
         drawerLayout = findViewById(R.id.nav_drawer_layout);
         navView = findViewById(R.id.nav_view);
         navView.setNavigationItemSelectedListener(this);
@@ -46,8 +48,9 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         drawerLayout.addDrawerListener(toggle);
 
         Drawable drawable = toggle.getDrawerArrowDrawable();
-        drawable.setColorFilter(getResources().getColor(R.color.white), PorterDuff.Mode.SRC_IN);
+        drawable.setColorFilter(getResources().getColor(R.color.orange), PorterDuff.Mode.SRC_IN);
 
+        // Set Default Fragment to HomeFragment
         if(savedInstanceState == null){
             FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
             transaction.replace(R.id.content_container, new HomeFragment());
@@ -93,7 +96,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
     @Override
     public void onMovieClicked(String movieId) {
-        Log.v("movieId", movieId);
         FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
         transaction.replace(R.id.content_container, MovieFragment.newInstance(movieId));
         transaction.commit();

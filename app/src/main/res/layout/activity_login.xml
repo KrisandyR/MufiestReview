@@ -13,14 +13,9 @@
         android:layout_height="match_parent"
         android:layout_centerInParent="true"
         android:scaleType="centerCrop"
-        android:contentDescription="Login Background Image"
-        android:src="@drawable/solid_color_image_blue_grey" />
+        android:src="@color/dark_blue_grey" />
 
     <!-- Gradient Overlay -->
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="@drawable/login_image_gradient_overlay" />
 
     <!-- Content -->
     <RelativeLayout
@@ -30,25 +25,29 @@
         android:layout_centerInParent="true">
 
         <!-- Mufiest Logo -->
-        <ImageView
-            android:id="@+id/logoImageView"
-            android:layout_width="250dp"
-            android:layout_height="56dp"
-            android:src="@drawable/mufiest_upper_logo_gold"
-            android:contentDescription="Mufiest Logo"
-            android:layout_centerHorizontal="true"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:text="MUFIEST"
+            android:textColor="@color/orange"
+            android:fontFamily="@font/raleway_semibold"
+            android:textSize="64sp"
+            android:id="@+id/loginLogoTv"
+            />
 
         <!-- Information Text -->
         <TextView
             android:id="@+id/informationText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@id/logoImageView"
+            android:layout_below="@id/loginLogoTv"
             android:layout_centerInParent="true"
             android:layout_marginTop="7dp"
             android:text="Fill the information below"
+            android:fontFamily="@font/raleway_regular"
             android:textColor="@color/white"
-            android:textSize="16dp" />
+            android:textSize="16sp" />
 
         <EditText
             android:id="@+id/emailBox"
@@ -57,7 +56,10 @@
             android:layout_below="@id/informationText"
             android:layout_marginTop="16dp"
             android:layout_marginBottom="16dp"
+            android:padding="8dp"
             android:hint="Email"
+            android:textSize="16sp"
+            android:fontFamily="@font/lato_regular"
             android:inputType="textEmailAddress"
             android:background="#FFFFFF"/>
 
@@ -67,19 +69,21 @@
             android:layout_height="wrap_content"
             android:layout_below="@id/emailBox"
             android:layout_marginBottom="16dp"
+            android:padding="8dp"
             android:hint="Password"
+            android:textSize="16sp"
+            android:fontFamily="@font/lato_regular"
             android:inputType="textPassword"
             android:background="#FFFFFF"/>
-
         <!-- Login Button -->
         <LinearLayout
             android:id="@+id/loginButton"
             android:layout_width="100dp"
-            android:layout_height="43dp"
+            android:layout_height="wrap_content"
             android:orientation="horizontal"
             android:gravity="center"
             android:background="@drawable/rounded_button"
-
+            android:padding="14dp"
             android:layout_below="@id/passwordBox"
             android:layout_centerHorizontal="true"
             android:layout_margin="2dp">
@@ -88,9 +92,11 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textColor="#000000"
+                android:textColor="@color/blue_grey"
+                android:textSize="18sp"
+                android:fontFamily="@font/raleway_semibold"
                 android:text="Login"
-                android:textSize="16dp" />
+            />
         </LinearLayout>
 
     </RelativeLayout>

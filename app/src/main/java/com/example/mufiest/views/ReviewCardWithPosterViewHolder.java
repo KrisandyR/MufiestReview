@@ -16,7 +16,6 @@ public class ReviewCardWithPosterViewHolder extends RecyclerView.ViewHolder  {
     public RatingBar reviewRatingRb;
     public ImageView moviePosterIv;
     public TextView reviewDescTv;
-
     public ReviewCardWithPosterViewHolder(View itemView) {
         super(itemView);
         movieTitleTv = itemView.findViewById(R.id.tv_movie_title_rcwp);

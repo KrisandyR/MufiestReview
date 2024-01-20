@@ -11,14 +11,6 @@
         <item name="colorOnSecondary">@color/black</item>
         <!-- Status bar color. -->
         <item name="android:windowBackground">@color/dark_blue_grey</item>
-        <item name="textAppearanceHeadline6">@style/AppLabelStyle</item>
-    </style>
-
-
-    <style name="AppLabelStyle" parent="TextAppearance.MaterialComponents.Headline6">
-        <!-- Customize text appearance attributes to style the label -->
-        <item name="android:textColor">@color/orange</item>
-        <!-- Add other text attributes as needed -->
     </style>
 
     <style name="RegularTextViewStyle">
@@ -38,7 +30,6 @@
         <item name="colorOnSecondary">@color/black</item>
         <!-- Status bar color. -->
         <item name="android:windowBackground">@color/dark_blue_grey</item>
-        <item name="textAppearanceHeadline6">@style/AppLabelStyle</item>
     </style>
 
     <style name="Theme.Mufiest.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />

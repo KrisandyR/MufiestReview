@@ -5,14 +5,15 @@
     android:layout_height="150dp"
     android:gravity="bottom"
     android:padding="20dp"
-    android:background="@color/light_blue_grey"
+    android:background="@color/blue_grey"
     >
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Mufiest"
-        android:textColor="@color/white"
+        android:textColor="@color/orange"
+        android:fontFamily="@font/raleway_semibold"
         android:textSize="36sp"
     />
 

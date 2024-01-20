@@ -26,8 +26,24 @@
             android:background="@color/blue_grey"
             android:theme="@style/Theme.AppCompat.DayNight.DarkActionBar"
             android:popupTheme="@style/ThemeOverlay.AppCompat.Light"
-            app:titleTextColor="@color/white"
-            />
+            app:titleTextColor="@color/white">
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginLeft="0dp"
+                    android:layout_marginBottom="0.5dp"
+                    android:fontFamily="@font/raleway_semibold"
+                    android:text="Mufiest"
+                    android:textColor="@color/orange"
+                    android:textSize="22sp" />
+            </LinearLayout>
+
+        </androidx.appcompat.widget.Toolbar>
 
         <LinearLayout
             android:layout_width="match_parent"

@@ -68,7 +68,6 @@ public class MovieReviewList extends Fragment {
         }
 
         if (reviews.isEmpty()){
-            Log.v("else", "else");
             noReviewTv = view.findViewById(R.id.no_review_tv);
             noReviewTv.setVisibility(View.VISIBLE);
         }

@@ -39,7 +39,6 @@
                         />
                 </LinearLayout>
 
-
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -51,8 +50,6 @@
                     android:text="User" />
             </RelativeLayout>
 
-
-
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -63,7 +60,6 @@
                 android:paddingBottom="5dp"
                 android:fontFamily="@font/lato_regular"
             />
-
 
         </LinearLayout>
     </androidx.cardview.widget.CardView>

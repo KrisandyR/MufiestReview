@@ -28,26 +28,27 @@ public class ReviewController {
         DatabaseReference userCloudEndPoint = myRef.child("users");
         DatabaseReference reviewCloudEndPoint = myRef.child("reviews");
 
-        reviewCloudEndPoint.addListenerForSingleValueEvent(new ValueEventListener() {
+        reviewCloudEndPoint.limitToLast(10).addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
-            public void onDataChange(@NonNull DataSnapshot snapshot) {
+            public void onDataChange(@NonNull DataSnapshot reviewSnapshots) {
                 ArrayList<ReviewWithDetail> reviewsWithDetails = new ArrayList<>();
+                ArrayList<ReviewWithDetail> reviewsWithDetailsReverse = new ArrayList<>();
 
-                for (DataSnapshot reviewSnapshot : snapshot.getChildren()) {
+                for (DataSnapshot reviewSnapshot : reviewSnapshots.getChildren()) {
                     Review review = reviewSnapshot.getValue(Review.class);
 
                     if (review != null) {
                         DatabaseReference moviesRef = movieCloudEndPoint.child(review.getMovieId());
                         moviesRef.addListenerForSingleValueEvent(new ValueEventListener() {
                             @Override
-                            public void onDataChange(@NonNull DataSnapshot snapshot) {
-                                Movie movie = snapshot.getValue(Movie.class);
+                            public void onDataChange(@NonNull DataSnapshot movieSnapshot) {
+                                Movie movie = movieSnapshot.getValue(Movie.class);
                                 if (movie != null) {
                                     DatabaseReference usersRef = userCloudEndPoint.child(review.getUserId());
                                     usersRef.addListenerForSingleValueEvent(new ValueEventListener() {
                                         @Override
-                                        public void onDataChange(@NonNull DataSnapshot snapshot) {
-                                            User user = snapshot.getValue(User.class);
+                                        public void onDataChange(@NonNull DataSnapshot userSnapshot) {
+                                            User user = userSnapshot.getValue(User.class);
 
                                             if (user != null) {
                                                 ReviewWithDetail reviewWithDetail = new ReviewWithDetail();
@@ -65,8 +66,13 @@ public class ReviewController {
 
                                                 reviewsWithDetails.add(reviewWithDetail);
 
-                                                if (reviewsWithDetails.size() == snapshot.getChildrenCount()) {
-                                                    listener.onReviewsLoaded(reviewsWithDetails);
+                                                if (reviewsWithDetails.size() == reviewSnapshots.getChildrenCount()) {
+
+                                                    for (int i = reviewsWithDetails.size()-1; i>=0; i--){
+                                                        reviewsWithDetailsReverse.add(reviewsWithDetails.get(i));
+                                                    }
+
+                                                    listener.onReviewsLoaded(reviewsWithDetailsReverse);
                                                 }
                                             }
                                         }
@@ -93,6 +99,75 @@ public class ReviewController {
         });
     }
 
+    public static void getPersonalReviewByMovieId(String movieId, String userId, OnReviewLoadedListener listener) {
+
+
+        FirebaseDatabase database = FirebaseDatabase.getInstance("https://mufiest-e2f6c-default-rtdb.asia-southeast1.firebasedatabase.app/");
+        DatabaseReference myRef = database.getReference();
+        DatabaseReference movieCloudEndPoint = myRef.child("movies").child(movieId);
+        DatabaseReference userCloudEndPoint = myRef.child("users");
+        DatabaseReference reviewCloudEndPoint = myRef.child("reviews");
+
+        movieCloudEndPoint.addListenerForSingleValueEvent(new ValueEventListener() {
+
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+
+                Movie movie = snapshot.getValue(Movie.class);
+                reviewCloudEndPoint.addListenerForSingleValueEvent(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot snapshot) {
+                        for (DataSnapshot reviewSnapshot : snapshot.getChildren()) {
+                            Review review = reviewSnapshot.getValue(Review.class);
+                            if (movie != null && review != null && review.getUserId().equals(userId)  && review.getMovieId().equals(movieId)) {
+                                DatabaseReference usersRef = userCloudEndPoint.child(review.getUserId());
+                                usersRef.addListenerForSingleValueEvent(new ValueEventListener() {
+                                    @Override
+                                    public void onDataChange(@NonNull DataSnapshot userSnapshot) {
+                                        User user = userSnapshot.getValue(User.class);
+                                        if (user != null) {
+                                            ReviewWithDetail reviewWithDetail = new ReviewWithDetail();
+                                            reviewWithDetail.setMovieName(movie.getTitle());
+                                            reviewWithDetail.setMovieYear(movie.getYear());
+                                            reviewWithDetail.setMoviePosterUrl(movie.getPosterUrl());
+                                            reviewWithDetail.setUsername(user.getUsername());
+                                            reviewWithDetail.setReviewId(review.getReviewId());
+                                            reviewWithDetail.setMovieId(review.getMovieId());
+                                            reviewWithDetail.setUserId(review.getUserId());
+                                            reviewWithDetail.setDescription(review.getDescription());
+                                            reviewWithDetail.setDate(review.getDate());
+                                            reviewWithDetail.setRating(review.getRating());
+                                            reviewWithDetail.setLikedBy(review.getLikedBy());
+                                            listener.onReviewLoaded(reviewWithDetail);
+                                        }
+                                    }
+
+                                    @Override
+                                    public void onCancelled(@NonNull DatabaseError error) {
+                                        listener.onError(error.getMessage());
+                                    }
+                                });
+                            }
+                        }
+
+                        // If review is not found, return null
+                        listener.onReviewLoaded(null);
+                    }
+
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError error) {
+                        listener.onError(error.getMessage());
+                    }
+                });
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+                listener.onError(error.getMessage());
+            }
+        });
+    }
+
     public static void getReviewsByMovieId(String movieId, OnReviewsLoadedListener listener) {
 
         FirebaseDatabase database = FirebaseDatabase.getInstance("https://mufiest-e2f6c-default-rtdb.asia-southeast1.firebasedatabase.app/");
@@ -104,7 +179,7 @@ public class ReviewController {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 Movie movie = snapshot.getValue(Movie.class);
-                reviewCloudEndPoint.addListenerForSingleValueEvent(new ValueEventListener() {
+                reviewCloudEndPoint.orderByChild("movieId").equalTo(movieId).addListenerForSingleValueEvent(new ValueEventListener() {
                     @Override
                     public void onDataChange(@NonNull DataSnapshot snapshot) {
 
@@ -134,7 +209,9 @@ public class ReviewController {
                                             reviewsWithDetails.add(reviewWithDetail);
 
                                             if (reviewsWithDetails.size() == snapshot.getChildrenCount()) {
-                                                listener.onReviewsLoaded(reviewsWithDetails);
+                                                ArrayList<ReviewWithDetail> reversedReviewWithDetails = new ArrayList<>(reviewsWithDetails);
+                                                Collections.reverse(reversedReviewWithDetails);
+                                                listener.onReviewsLoaded(reversedReviewWithDetails);
                                             }
                                         }
                                     }
@@ -167,6 +244,11 @@ public class ReviewController {
 
     public interface OnReviewsLoadedListener {
         void onReviewsLoaded(ArrayList<ReviewWithDetail> reviews);
+        void onError(String errorMessage);
+    }
+
+    public interface OnReviewLoadedListener {
+        void onReviewLoaded(ReviewWithDetail review);
         void onError(String errorMessage);
     }
 

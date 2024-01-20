@@ -22,11 +22,9 @@ import java.util.ArrayList;
 public class ReviewWithPosterList extends Fragment {
 
     private TextView reviewListTitleTv;
-
     private RecyclerView reviewListRv;
     private static final String ARG_PARAM1 = "reviews";
     private static final String ARG_PARAM2 = "sortReviewBy";
-
     private ArrayList<ReviewWithDetail> reviews;
     private String sortReviewBy;
 
@@ -55,7 +53,7 @@ public class ReviewWithPosterList extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
+
         View view = inflater.inflate(R.layout.fragment_review_with_poster_list, container, false);
         reviewListRv = view.findViewById(R.id.rv_review_scroll_list_frwpl);
         reviewListTitleTv = view.findViewById(R.id.review_list_title_frwpl);
