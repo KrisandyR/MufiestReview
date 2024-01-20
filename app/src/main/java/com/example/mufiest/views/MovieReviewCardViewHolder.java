@@ -10,11 +10,9 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.mufiest.R;
 
 public class MovieReviewCardViewHolder extends RecyclerView.ViewHolder {
-
     public TextView reviewerTv;
     public TextView reviewDescTv;
     public RatingBar reviewRatingRb;
-
     public MovieReviewCardViewHolder(View itemView) {
         super(itemView);
         reviewerTv = itemView.findViewById(R.id.tv_reviewer_mrc);

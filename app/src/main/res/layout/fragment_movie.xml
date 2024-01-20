@@ -1,229 +1,276 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<androidx.core.widget.NestedScrollView
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout
     xmlns:tools="http://schemas.android.com/tools"
     tools:context=".fragments.MovieFragment"
-    android:layout_height="wrap_content"
-     android:layout_width="match_parent"
-    android:orientation="vertical"
->
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <LinearLayout
-        android:layout_width="match_parent"
+    <androidx.core.widget.NestedScrollView
         android:layout_height="wrap_content"
+        android:layout_width="match_parent"
         android:orientation="vertical"
         >
 
-        <RelativeLayout
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:paddingBottom="7.5dp"
+            android:orientation="vertical"
             >
 
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:id="@+id/movie_background_layout_fm"
+                android:paddingBottom="7.5dp"
                 >
 
-                <ImageView
-                    android:id="@+id/movie_background_iv_fm"
+                <RelativeLayout
                     android:layout_width="match_parent"
-                    android:layout_height="250dp"
-                    android:scaleType="centerCrop"
-                    android:src="@drawable/example_movie_background"
-                    android:contentDescription="@string/movie_background"
-                    />
-
-                <View
-                    android:layout_width="match_parent"
-                    android:layout_height="250dp"
-                    android:background="@drawable/movie_gradient_overlay" />
-            </RelativeLayout>
-
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignStart="@+id/movie_background_layout_fm"
-                android:layout_marginTop="135dp"
-                android:layout_marginStart="25dp"
-                android:padding="2dp"
-                android:background="@color/light_blue_grey"
-                android:id="@+id/movie_poster_fm"
-                >
-                <ImageView
-                    android:id="@+id/movie_poster_iv_fm"
-                    android:layout_width="125dp"
-                    android:layout_height="187.5dp"
-                    android:src="@drawable/example_movie_poster"
-                    />
-            </LinearLayout>
-
-
-
-
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_toEndOf="@id/movie_poster_fm"
-                android:layout_alignBottom="@id/movie_background_layout_fm"
-                android:layout_marginStart="20dp"
-                android:layout_marginTop="20dp"
-                android:layout_marginEnd="20dp"
-                android:layout_marginBottom="10dp"
-                android:orientation="vertical">
-
-                <TextView
-                    android:id="@+id/movie_name_tv_fm"
-                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/movie_name_placeholder"
-                    android:textColor="@color/white"
-                    android:fontFamily="@font/raleway_semibold"
-                    android:textSize="30sp"
-                    android:lineHeight="28sp"
-                    />
+                    android:id="@+id/movie_background_layout_fm"
+                    >
 
-                <RatingBar
-                    android:id="@+id/review_rating_rb_fm"
-                    style="@style/Widget.AppCompat.RatingBar.Small"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:numStars="5"
-                    android:progressTint="@color/orange"
-                    android:progressBackgroundTint="@color/white"
-                    android:progressBackgroundTintMode="src_in"
-                    android:rating="3.5"
-                    android:stepSize="0.5"
-                    android:layout_marginTop="3dp"
-                    />
-            </LinearLayout>
+                    <ImageView
+                        android:id="@+id/movie_background_iv_fm"
+                        android:layout_width="match_parent"
+                        android:layout_height="250dp"
+                        android:scaleType="centerCrop"
+                        android:src="@drawable/example_movie_background"
+                        android:contentDescription="@string/movie_background"
+                        />
 
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_toEndOf="@id/movie_poster_fm"
-                android:layout_below="@id/movie_background_layout_fm"
-                android:layout_marginStart="20dp"
-                android:layout_marginTop="15dp"
-                android:layout_marginEnd="20dp"
-                android:layout_marginBottom="15dp"
-                android:orientation="vertical"
-                >
-
-
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="DIRECTED BY"
-                    android:textColor="@color/lighter_blue_grey"
-                    android:fontFamily="@font/raleway_regular"
-                    android:textSize="12sp"
-                    />
-
-                <TextView
-                    android:id="@+id/movie_director_tv_fm"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Director Placeholder Name"
-                    android:textColor="@color/lighter_blue_grey"
-                    android:fontFamily="@font/raleway_semibold"
-                    android:textSize="16sp"
-                    />
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="250dp"
+                        android:background="@drawable/movie_gradient_overlay" />
+                </RelativeLayout>
 
                 <LinearLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    android:layout_marginTop="7sp"
+                    android:layout_alignStart="@+id/movie_background_layout_fm"
+                    android:layout_marginTop="135dp"
+                    android:layout_marginStart="25dp"
+                    android:padding="2dp"
+                    android:background="@color/light_blue_grey"
+                    android:id="@+id/movie_poster_fm"
                     >
-                    <TextView
-                        android:id="@+id/movie_year_tv_fm"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="2023"
-                        android:fontFamily="@font/lato_regular"
-                        android:textColor="@color/lighter_blue_grey"
-                        android:textSize="13sp"
-                        android:layout_marginEnd="20dp"
+                    <ImageView
+                        android:id="@+id/movie_poster_iv_fm"
+                        android:layout_width="125dp"
+                        android:layout_height="187.5dp"
+                        android:src="@drawable/example_movie_poster"
                         />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_toEndOf="@id/movie_poster_fm"
+                    android:layout_alignBottom="@id/movie_background_layout_fm"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginTop="20dp"
+                    android:layout_marginEnd="20dp"
+                    android:layout_marginBottom="10dp"
+                    android:orientation="vertical">
+
                     <TextView
-                        android:id="@+id/movie_length_tv_fm"
+                        android:id="@+id/movie_name_tv_fm"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="151 min"
-                        android:fontFamily="@font/lato_regular"
-                        android:textColor="@color/lighter_blue_grey"
-                        android:textSize="13sp"/>
+                        android:text="@string/movie_name_placeholder"
+                        android:textColor="@color/white"
+                        android:fontFamily="@font/raleway_semibold"
+                        android:textSize="30sp"
+                        android:lineHeight="28sp"
+                        />
+
+                    <RatingBar
+                        android:id="@+id/review_rating_rb_fm"
+                        style="@style/Widget.AppCompat.RatingBar.Small"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:numStars="5"
+                        android:progressTint="@color/orange"
+                        android:progressBackgroundTint="@color/white"
+                        android:progressBackgroundTintMode="src_in"
+                        android:rating="3.5"
+                        android:stepSize="0.5"
+                        android:layout_marginTop="3dp"
+                        />
                 </LinearLayout>
-            </LinearLayout>
-        </RelativeLayout>
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/lorem_ipsum_description_movie"
-            android:textSize="13sp"
-            android:textColor="@color/lighter_blue_grey_2"
-            android:fontFamily="@font/lato_regular"
-            android:layout_marginHorizontal="25dp"
-            android:id="@+id/movie_desc_tv_fm"
-            />
-
-
-        <View
-            android:layout_width="match_parent"
-            android:layout_marginHorizontal="20dp"
-            android:layout_height="0.9dp"
-            android:background="@drawable/divider"
-            android:layout_marginVertical="15dp"
-            />
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_toEndOf="@id/movie_poster_fm"
+                    android:layout_below="@id/movie_background_layout_fm"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginTop="15dp"
+                    android:layout_marginEnd="20dp"
+                    android:layout_marginBottom="15dp"
+                    android:orientation="vertical"
+                    >
 
 
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/rv_movie_genre_list_fm"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginHorizontal="25dp"
-            android:orientation="horizontal"
-            android:scrollbars="horizontal"
-            />
 
-        <View
-            android:layout_width="match_parent"
-            android:layout_marginHorizontal="20dp"
-            android:layout_height="0.9dp"
-            android:background="@drawable/divider"
-            android:layout_marginVertical="15dp"
-            />
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="DIRECTED BY"
+                        android:textColor="@color/lighter_blue_grey"
+                        android:fontFamily="@font/raleway_regular"
+                        android:textSize="12sp"
+                        />
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginHorizontal="25dp"
-            android:orientation="vertical"
-            >
+                    <TextView
+                        android:id="@+id/movie_director_tv_fm"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Director Placeholder Name"
+                        android:textColor="@color/lighter_blue_grey"
+                        android:fontFamily="@font/raleway_semibold"
+                        android:textSize="16sp"
+                        />
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:layout_marginTop="7sp"
+                        >
+                        <TextView
+                            android:id="@+id/movie_year_tv_fm"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="2023"
+                            android:fontFamily="@font/lato_regular"
+                            android:textColor="@color/lighter_blue_grey"
+                            android:textSize="13sp"
+                            android:layout_marginEnd="20dp"
+                            />
+                        <TextView
+                            android:id="@+id/movie_length_tv_fm"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="151 min"
+                            android:fontFamily="@font/lato_regular"
+                            android:textColor="@color/lighter_blue_grey"
+                            android:textSize="13sp"/>
+                    </LinearLayout>
+                </LinearLayout>
+            </RelativeLayout>
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Reviews"
-                android:fontFamily="@font/font_family_semibold"
-                android:textColor="@color/lighter_blue_grey"
+                android:text="@string/lorem_ipsum_description_movie"
+                android:textSize="13sp"
+                android:textColor="@color/lighter_blue_grey_2"
+                android:fontFamily="@font/lato_regular"
+                android:layout_marginHorizontal="25dp"
+                android:id="@+id/movie_desc_tv_fm"
+                />
+
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_marginHorizontal="20dp"
+                android:layout_height="0.9dp"
+                android:background="@drawable/divider"
+                android:layout_marginVertical="15dp"
+                />
+
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rv_movie_genre_list_fm"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="25dp"
+                android:orientation="horizontal"
+                android:scrollbars="horizontal"
+                />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_marginHorizontal="20dp"
+                android:layout_height="0.9dp"
+                android:background="@drawable/divider"
+                android:layout_marginVertical="15dp"
                 />
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:id="@+id/movie_review_list_container_fm"
-                android:layout_marginTop="5dp"
-                android:orientation="horizontal" />
+                android:layout_marginHorizontal="25dp"
+                android:orientation="vertical"
+                >
 
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Reviews"
+                    android:fontFamily="@font/font_family_semibold"
+                    android:textColor="@color/lighter_blue_grey"
+                    />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/movie_review_list_container_fm"
+                    android:layout_marginTop="5dp"
+                    android:orientation="horizontal" />
+
+            </LinearLayout>
         </LinearLayout>
+    </androidx.core.widget.NestedScrollView>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:id="@+id/review_form_container_fm"
+    />
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginEnd="20dp"
+        android:paddingBottom="30dp"
+        >
+        <ImageButton
+            android:id="@+id/fixed_add_review_btn"
+            android:visibility="gone"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:src="@drawable/baseline_add_24"
+            android:background="@drawable/circle_button_background"
+            android:onClick="onAddReviewButtonClick"/>
 
     </LinearLayout>
 
-</androidx.core.widget.NestedScrollView>
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginEnd="20dp"
+        android:paddingBottom="30dp"
+        >
 
+        <ImageButton
+            android:id="@+id/fixed_edit_review_btn"
+            android:visibility="gone"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:src="@drawable/baseline_edit_24"
+            android:background="@drawable/circle_button_background"
+            android:onClick="onEditReviewButtonClick"
+            />
+
+    </LinearLayout>
+
+</RelativeLayout>

@@ -103,4 +103,7 @@
     <string name="movie_background">Movie Background</string>
     <string name="movie_name_placeholder">Movie Name Placeholder</string>
     <string name="lorem_ipsum_description_movie">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec vel dictum sapien. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Proin in purus ut turpis venenatis placerat. Integer a dolor in sem tristique pellentesque non nec arcu. Duis feugiat dui quis sapien tempus dapibus. Lorem ipsum dolor sit amet, consectetur adipiscing elit.</string>
+    <string name="review_placeholder_text">Insert your review here...</string>
+    <string name="submit_btn_text">SUBMIT</string>
+    <string name="placeholder_review_title">Review</string>
 </resources>

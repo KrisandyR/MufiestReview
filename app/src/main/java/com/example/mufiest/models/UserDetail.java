@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class UserDetail {
-
     private String userDetailId;
     private String userId;
     private ArrayList<String> reviews;
