@@ -56,7 +56,7 @@ public class RegisterActivity extends AppCompatActivity {
         loginText.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                navigateToRegisterPage();
+                navigateToLoginPage();
             }
         });
 
@@ -79,8 +79,8 @@ public class RegisterActivity extends AppCompatActivity {
         });
     }
 
-    private void navigateToRegisterPage() {
-        Intent registerPage = new Intent(this, RegisterActivity.class);
+    private void navigateToLoginPage() {
+        Intent registerPage = new Intent(this,LoginActivity.class);
         startActivity(registerPage);
         finish();
     }

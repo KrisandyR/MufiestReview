@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="vertical"
-    android:layout_marginTop="13dp"
+    android:layout_marginTop="15dp"
     tools:context=".fragments.HomeFragment">
 
     <LinearLayout
@@ -17,11 +17,11 @@
             android:id="@+id/searchLabel"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
             android:layout_marginLeft="20dp"
             android:layout_marginRight="20dp"
-            android:textSize="33sp"
+            android:textSize="20sp"
             android:textColor="@color/white"
+            android:fontFamily="@font/raleway_semibold"
             android:text="Search Movies" />
 
         <RelativeLayout
@@ -29,7 +29,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginLeft="20dp"
-            android:layout_marginRight="20dp"
+            android:layout_marginRight="18dp"
             android:layout_marginTop="20dp"
             android:background="@drawable/search_box">
 
@@ -39,10 +39,11 @@
                 android:layout_height="wrap_content"
                 android:inputType="text"
                 android:hint="Search"
-                android:textColorHint="@color/white"
+                android:textColorHint="@color/lighter_blue_grey_2"
                 android:textColor="@color/white"
                 android:background="@android:color/transparent"
-                android:textSize="18sp"
+                android:fontFamily="@font/lato_regular"
+                android:textSize="14sp"
                 android:padding="13dp"
                 android:layout_toLeftOf="@+id/searchButton"
                 android:layout_toStartOf="@+id/searchButton"/>
@@ -63,12 +64,13 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            android:layout_marginTop="20dp">
+            android:layout_marginTop="5dp">
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:id="@+id/searchMovieListContainer"
+                android:layout_gravity="center_horizontal"
                 android:orientation="horizontal" />
         </LinearLayout>
 

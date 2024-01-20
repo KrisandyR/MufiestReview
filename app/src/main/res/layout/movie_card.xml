@@ -12,6 +12,7 @@
         android:clickable="true"
         android:contentDescription="movie_poster_image_view"
         android:layout_marginRight="10dp"
+        android:layout_marginBottom="10dp"
     />
 
 </LinearLayout>

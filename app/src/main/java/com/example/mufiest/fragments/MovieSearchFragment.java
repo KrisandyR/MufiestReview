@@ -70,6 +70,7 @@ public class MovieSearchFragment extends Fragment {
     }
 
     private void searchMovie(String movieTitle) {
+        Log.v("search", movieTitle);
         if (movieTitle.isEmpty() || movieTitle.trim().equals("")) {
             Toast.makeText(requireContext(), "Please enter a movie title", Toast.LENGTH_SHORT).show();
             return;
@@ -78,7 +79,7 @@ public class MovieSearchFragment extends Fragment {
         database = FirebaseDatabase.getInstance();
         movieRef = database.getReference("movies");
 
-        movieRef.orderByChild("title").equalTo(movieTitle).addListenerForSingleValueEvent(new ValueEventListener() {
+        movieRef.orderByChild("title").addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 handleMovieSearchResult(dataSnapshot);
@@ -102,24 +103,24 @@ public class MovieSearchFragment extends Fragment {
 
             Movie movie = movieSnapshot.getValue(Movie.class);
 
-            if (movie != null) {
+            if (movie != null && movie.getTitle().toLowerCase().contains(movieTitle.toLowerCase())) {
                 searchMovies.add(movie);
 
-                addMovieScrollListFragment(searchMovies, "Search Results", R.id.searchMovieListContainer);
+                addMovieScrollListFragment(searchMovies, "MovieFound", R.id.searchMovieListContainer);
 
                 movieFound = true;
             }
         }
 
         if (!movieFound) {
-            addMovieScrollListFragment(searchMovies, "0", R.id.searchMovieListContainer);
+            addMovieScrollListFragment(searchMovies, "NoMovieFound", R.id.searchMovieListContainer);
 
             Toast.makeText(requireContext(), "Movie Title Not Found", Toast.LENGTH_SHORT).show();
         }
     }
 
     private void addMovieScrollListFragment(ArrayList<Movie> searchMovies, String movieListType, int fragmentId) {
-        MovieScrollList movieScrollListFragment = MovieScrollList.newInstance(searchMovies, movieListType);
+        MovieScrollList movieScrollListFragment = MovieScrollList.newInstance(searchMovies, movieListType, true);
         FragmentTransaction transaction = getChildFragmentManager().beginTransaction();
         transaction.replace(fragmentId, movieScrollListFragment);
         transaction.commit();

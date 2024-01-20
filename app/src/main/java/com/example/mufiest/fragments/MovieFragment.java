@@ -17,6 +17,7 @@ import android.view.inputmethod.InputMethodManager;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.RatingBar;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -35,12 +36,15 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.squareup.picasso.Picasso;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
 public class MovieFragment extends Fragment implements ReviewFormFragment.onExitButtonClickedListener, ReviewFormFragment.onSubmitButtonClickedListener {
 
-    private static final String ARG_MOVIE = "movieId";
+    private static final String ARG_PARAM1 = "movieId";
+    private static final String ARG_PARAM2 = "onBackButtonClickListener";
 
+    private OnBackButtonClickedListener onBackButtonClickListener;
     private View view;
     private Context ctx;
     private String movieId, userId;
@@ -52,7 +56,7 @@ public class MovieFragment extends Fragment implements ReviewFormFragment.onExit
     private RecyclerView genresRv;
     private GenreListAdapter adapter;
     private RatingBar movieRatingRb;
-    private ImageButton addReviewBtn, editReviewBtn;
+    private ImageButton addReviewBtn, editReviewBtn, backBtn;
 
     private ReviewWithDetail personalReview;
     private boolean personalReviewExists;
@@ -61,10 +65,11 @@ public class MovieFragment extends Fragment implements ReviewFormFragment.onExit
         // Required empty public constructor
     }
 
-    public static MovieFragment newInstance(String movieId) {
+    public static MovieFragment newInstance(String movieId, OnBackButtonClickedListener onBackButtonClickListener) {
         MovieFragment fragment = new MovieFragment();
         Bundle args = new Bundle();
-        args.putString(ARG_MOVIE, movieId);
+        args.putString(ARG_PARAM1, movieId);
+        args.putSerializable(ARG_PARAM2, onBackButtonClickListener);
         fragment.setArguments(args);
         return fragment;
     }
@@ -79,7 +84,8 @@ public class MovieFragment extends Fragment implements ReviewFormFragment.onExit
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         if (getArguments() != null) {
-            movieId = getArguments().getString(ARG_MOVIE);
+            movieId = getArguments().getString(ARG_PARAM1);
+            onBackButtonClickListener = (OnBackButtonClickedListener) getArguments().getSerializable(ARG_PARAM2);
         }
     }
 
@@ -92,11 +98,24 @@ public class MovieFragment extends Fragment implements ReviewFormFragment.onExit
         addReviewBtn = view.findViewById(R.id.fixed_add_review_btn);
         editReviewBtn = view.findViewById(R.id.fixed_edit_review_btn);
 
+        backBtn = view.findViewById(R.id.back_btn_fm);
+
+        setBackBtn();
         getUserIdByAuth();
         getReviewData(view);
         getMovieData(view);
 
         return view;
+    }
+
+    private void setBackBtn() {
+        backBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Log.v("check", "clicked");
+                onBackButtonClickListener.onBackButtonClicked();
+            }
+        });
     }
 
     private void getUserIdByAuth() {
@@ -309,6 +328,7 @@ public class MovieFragment extends Fragment implements ReviewFormFragment.onExit
     public void onSubmitButtonClicked() {
         handleUserIdIsSet(userId);
         getReviewData(view);
+        getMovieRating();
         hideReviewForm();
         hideSoftKeyboard();
     }
@@ -326,5 +346,9 @@ public class MovieFragment extends Fragment implements ReviewFormFragment.onExit
     private void hideSoftKeyboard() {
         InputMethodManager inputMethodManager = (InputMethodManager) ctx.getSystemService(Context.INPUT_METHOD_SERVICE);
         inputMethodManager.hideSoftInputFromWindow(requireView().getWindowToken(), 0);
+    }
+
+    public interface OnBackButtonClickedListener extends Serializable {
+        void onBackButtonClicked();
     }
 }
