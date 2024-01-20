@@ -13,14 +13,28 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/movieListTitle"
-        style="@style/RalewaySemiBoldTextStyle"
         android:text="Movie List"
         android:layout_marginBottom="12dp"
+        android:fontFamily="@font/raleway_semibold"
+        android:textColor="@color/white"
         android:textSize="18sp"
+        />
+
+    <TextView
+        android:visibility="gone"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/movieSearchResultTitle"
+        android:text="Movie List"
+        android:layout_marginBottom="12dp"
+        android:fontFamily="@font/lato_regular"
+        android:textColor="@color/white"
+        android:textSize="14sp"
         />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rv_movie_scroll_list"
+        android:layout_gravity="center_horizontal"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"

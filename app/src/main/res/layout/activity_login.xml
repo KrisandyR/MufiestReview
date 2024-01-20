@@ -52,7 +52,7 @@
         <EditText
             android:id="@+id/emailBox"
             android:layout_width="330dp"
-            android:layout_height="wrap_content"
+            android:layout_height="50dp"
             android:layout_below="@id/informationText"
             android:layout_marginTop="16dp"
             android:layout_marginBottom="16dp"
@@ -99,6 +99,18 @@
                 android:text="Login"
             />
         </LinearLayout>
+
+        <TextView
+            android:id="@+id/registerTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/loginButton"
+            android:layout_centerInParent="true"
+            android:layout_marginTop="13dp"
+            android:text="Click here if you doesn't have an account"
+            android:fontFamily="@font/raleway_semibold"
+            android:textColor="#FFFF"
+            android:textSize="16dp" />
 
     </RelativeLayout>
 

@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
+import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
 import android.content.Intent;
@@ -31,7 +32,8 @@ import com.google.android.material.navigation.NavigationView;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
-public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener, MovieScrollListAdapter.OnMovieClickListener {
+public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener,
+        MovieScrollListAdapter.OnMovieClickListener, MovieFragment.OnBackButtonClickedListener{
 
     private DrawerLayout drawerLayout;
     private NavigationView navView;
@@ -75,16 +77,19 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
         switch (item.getItemId()){
             case R.id.home_menu:
+                getSupportFragmentManager().popBackStack(null, FragmentManager.POP_BACK_STACK_INCLUSIVE);
                 transaction.replace(R.id.content_container, new HomeFragment());
                 transaction.commit();
                 navView.setCheckedItem(R.id.home_menu);
                 break;
             case R.id.movies_menu_search:
+                getSupportFragmentManager().popBackStack(null, FragmentManager.POP_BACK_STACK_INCLUSIVE);
                 transaction.replace(R.id.content_container, new MovieSearchFragment());
                 transaction.commit();
                 navView.setCheckedItem(R.id.movies_menu_search);
                 break;
             case R.id.profile_menu:
+                getSupportFragmentManager().popBackStack(null, FragmentManager.POP_BACK_STACK_INCLUSIVE);
                 transaction.replace(R.id.content_container, new ProfileFragment());
                 transaction.commit();
                 navView.setCheckedItem(R.id.profile_menu);
@@ -112,8 +117,21 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     @Override
     public void onMovieClicked(String movieId) {
         FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
-        transaction.replace(R.id.content_container, MovieFragment.newInstance(movieId));
+        transaction.replace(R.id.content_container, MovieFragment.newInstance(movieId, this));
+        transaction.addToBackStack(null);
         transaction.commit();
         navView.setCheckedItem(0);
+    }
+
+    @Override
+    public void onBackButtonClicked() {
+        if (getSupportFragmentManager().getBackStackEntryCount() > 0) {
+            getSupportFragmentManager().popBackStack();
+        } else {
+            FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
+            transaction.replace(R.id.content_container, new HomeFragment());
+            transaction.commit();
+            navView.setCheckedItem(R.id.home_menu);
+        }
     }
 }
