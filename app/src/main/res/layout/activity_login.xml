@@ -66,7 +66,7 @@
         <EditText
             android:id="@+id/passwordBox"
             android:layout_width="330dp"
-            android:layout_height="wrap_content"
+            android:layout_height="50dp"
             android:layout_below="@id/emailBox"
             android:layout_marginBottom="16dp"
             android:padding="8dp"
@@ -75,6 +75,7 @@
             android:fontFamily="@font/lato_regular"
             android:inputType="textPassword"
             android:background="#FFFFFF"/>
+
         <!-- Login Button -->
         <LinearLayout
             android:id="@+id/loginButton"
