@@ -54,15 +54,16 @@ public class HomeFragment extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        addPopularMovieList();
-        addFavoriteMovieList();
-        addRecentReviewsList();
+
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
+        addPopularMovieList();
+        addFavoriteMovieList();
+        addRecentReviewsList();
         return inflater.inflate(R.layout.fragment_home, container, false);
     }
 

@@ -134,14 +134,16 @@ public class MovieController {
                     public void onDataChange(@NonNull DataSnapshot snapshot) {
 
                         float totalRating = 0;
+                        float ratingCount = 0;
 
                         for(DataSnapshot reviewSnapshot : snapshot.getChildren()){
                             Review review = reviewSnapshot.getValue(Review.class);
                             if(movie != null && review != null && review.getMovieId().equals(movie.getMovieId())){
                                 totalRating += review.getRating();
+                                ratingCount += 1;
                             }
                         }
-                        listener.onMovieRatingLoaded(totalRating);
+                        listener.onMovieRatingLoaded(totalRating/ratingCount);
                     }
                     @Override
                     public void onCancelled(@NonNull DatabaseError error) {

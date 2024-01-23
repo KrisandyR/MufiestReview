@@ -7,7 +7,7 @@
     android:layout_height="match_parent"
     xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <androidx.core.widget.NestedScrollView
+    <ScrollView
         android:layout_height="wrap_content"
         android:layout_width="match_parent"
         android:orientation="vertical"
@@ -245,13 +245,15 @@
 
             </LinearLayout>
 
-            <LinearLayout
-                android:id="@+id/review_form_container_fm"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:orientation="vertical" />
+
         </LinearLayout>
-    </androidx.core.widget.NestedScrollView>
+    </ScrollView>
+
+    <LinearLayout
+        android:id="@+id/review_form_container_fm"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical" />
 
     <LinearLayout
         android:layout_width="wrap_content"
